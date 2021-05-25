@@ -1,12 +1,11 @@
-<div class="form-success hide" data-reset-success>
-  {{ 'customer.recover_password.success' | t }}
-</div>
-
 <div data-login-form>
   {% form 'customer_login' %}
     <h1>{{ 'customer.login.title' | t }}</h1>
 
-    {{ form.errors | default_errors }}
+    {% capture errors %}{{ form.errors | default_errors | strip_html | strip }}{% endcapture %}
+    {%- if errors.size > 0 -%}
+      {% render 'dialog' with errors %}
+    {%- endif -%}
 
     <label for="CustomerEmail" class="label-hidden">
       {{ 'customer.login.email' | t }}
@@ -52,11 +51,16 @@
   <p>{{ 'customer.recover_password.subtext' | t }}</p>
 
   {% form 'recover_customer_password' %}
-    {{ form.errors | default_errors }}
 
-    {% if form.posted_successfully? %}
-      <span class="hide" data-form-state></span>
-    {% endif %}
+    {% capture errors %}{{ form.errors | default_errors | strip_html | strip }}{% endcapture %}
+    {%- if errors.size > 0 -%}
+      {% render 'dialog' with errors %}
+    {%- endif -%}
+
+    {%- if form.posted_successfully? -%}
+      {% capture text %}{{ 'customer.reset_password.sent' | t }}{% endcapture %}
+      {% render 'dialog' with text %}
+    {%- endif -%}
 
     <label for="RecoverEmail" class="label-hidden">
       {{ 'customer.recover_password.email' | t }}
