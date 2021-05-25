@@ -1,0 +1,45 @@
+{
+  "name": "ud-shopify-boilerplate",
+  "version": "1.0.0",
+  "description": "A bare-bones boilerplate built by webpack",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch --mode=development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unifieddistricts/ud-shopify-boilerplate.git"
+  },
+  "keywords": [
+    "shopify",
+    "webpack",
+    "boilerplate",
+    "slate",
+    "unified",
+    "districts"
+  ],
+  "author": "Unified Districts",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/unifieddistricts/ud-shopify-boilerplate/issues"
+  },
+  "homepage": "https://github.com/unifieddistricts/ud-shopify-boilerplate#readme",
+  "devDependencies": {
+    "@shopify/theme-addresses": "^4.1.1",
+    "@shopify/theme-cart": "^4.1.1",
+    "@shopify/theme-predictive-search": "^4.1.1",
+    "@shopify/theme-predictive-search-component": "^4.1.1",
+    "@shopify/theme-product": "^4.1.1",
+    "css-loader": "^5.2.4",
+    "jquery": "^3.6.0",
+    "lazysizes": "^5.3.2",
+    "mini-css-extract-plugin": "^1.6.0",
+    "normalize.css": "^8.0.1",
+    "sass": "^1.32.13",
+    "sass-loader": "^11.1.1",
+    "webpack": "^5.37.1",
+    "webpack-cli": "^4.7.0",
+    "webpack-notifier": "^1.13.0"
+  }
+}
