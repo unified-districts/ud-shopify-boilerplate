@@ -4,9 +4,7 @@
     <h1>{{ 'customer.account.title' | t }}</h1>
   </header>
 
-  <p>
-    <a href="/account">{{ 'customer.account.return' | t }}</a>
-  </p>
+  <a href="/account">{{ 'customer.account.return' | t }}</a>
 
   <div data-address>
     <button type="button" data-address-toggle>{{ 'customer.addresses.add_new' | t }}</button>
@@ -103,7 +101,7 @@
       <div data-address-form class="hide">
         {% form 'customer_address', address %}
 
-        <h4>{{ 'customer.addresses.edit_address' | t }}</h4>
+        <h3>{{ 'customer.addresses.edit_address' | t }}</h3>
         <div data-address-fields class="address-form">
           <div>
             <label for="AddressFirstName_{{ form.id }}">
