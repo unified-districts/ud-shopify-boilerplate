@@ -50,7 +50,7 @@ Determine which packages you want to import
   1. Open `./scripts/index.js`
   2. Take note of the packages below imported by default. Removing these _will break functionality_ on your site.
      - [lazysizes](https://github.com/aFarkas/lazysizes)
-       - Existing images use a [snippet adapted from Shopify's Slate theme](https://github.com/Shopify/starter-theme/blob/master/src/snippets/responsive-image.liquid) that requires lazysizes. It's recommended to use this snippet because it outputs responsive images.
+       - Existing images use a [snippet adapted from Shopify's starter theme](https://github.com/Shopify/starter-theme/blob/master/src/snippets/responsive-image.liquid) that requires lazysizes. It's recommended to use this snippet because it outputs responsive images.
      - [@shopify/theme-addresses](https://github.com/Shopify/theme-scripts/tree/master/packages/theme-addresses)
        - This package dynamically edits form fields on the `/customer/addresses` page depending on the which country and province the customer chooses. By default, it's set to the US.
        - If removed, then the developer must manually add `option` elements to the country and province fields.
@@ -124,3 +124,7 @@ You may also want to choose a specific variable file to import. This can be conv
 For example, to access color variables in a module, one could write `@use '../variables/color' as color` and call variables by writing `color.$background`.
 
 ["Understanding Dart Sass modules and namespaced variables"](https://rimdev.io/understanding-dart-sass-modules-and-name-spaced-variables/) is a helpful resource for a deeper understanding of these differences and transitioning from Node to Dart Sass.
+
+## Acknowledgements
+
+Adapted from [Shopify's starter theme](https://github.com/Shopify/starter-theme)
