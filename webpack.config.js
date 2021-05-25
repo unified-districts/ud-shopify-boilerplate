@@ -8,6 +8,7 @@ module.exports = {
       './scripts/index.js',
       './styles/theme.scss'
     ],
+    devtool: 'source-map',
     mode: 'production',
     output: {
       filename: 'main.js.liquid',
