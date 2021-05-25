@@ -1,0 +1,22 @@
+SHARED: &SHARED
+  bucket_size: 40
+  refill_rate: 2
+  concurrency: 2
+  ignore_files:
+    - .git/*
+    - .gitignore
+    - .idea
+    - dev/*
+    - "*.swp"
+    - "*~"
+    - "config/settings_data.json"
+  password:
+  store:
+
+environment-one:
+  <<: *SHARED
+  theme_id:
+
+environment-two:
+  <<: *SHARED
+  theme_id:
