@@ -1,6 +1,6 @@
-@forward './variables';
+// IF USING SWIPER
+// @use '../node_modules/slider/swiper.scss';
 
-// CORE
 @use '../node_modules/normalize.css/normalize.css';
 @use 'components/dialogs';
 @use 'templates/not-found';
