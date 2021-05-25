@@ -31,7 +31,6 @@
   {%- endif -%}
 
   {% include 'social-meta-tags' %}
-  {% include 'style-tags', layout: 'theme' %}
   {% include 'css-variables' %}
 
   <script>
@@ -47,7 +46,8 @@
     };
   </script>
 
-  {% include 'script-tags', layout: 'theme' %}
+  <script defer src="{{ 'main.js' | asset_url }}" type="text/javascript"></script>
+  {{ 'main.css' | asset_url | stylesheet_tag }}
 
   {{ content_for_header }}
 </head>
