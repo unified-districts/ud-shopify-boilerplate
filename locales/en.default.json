@@ -225,7 +225,9 @@
       "subtext": "Enter a new password for {{ email }}",
       "password": "Password",
       "password_confirm": "Confirm Password",
-      "submit": "Reset Password"
+      "submit": "Reset Password",
+      "sent": "An email has been successfully sent with instructions to reset your password.",
+      "reset": "Password successfully reset!"
     },
     "register": {
       "title": "Create Account",
