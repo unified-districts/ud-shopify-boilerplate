@@ -1,4 +1,105 @@
-{% section 'product' %}
+<section data-section-id="{{ section.id }}" data-section-type="product">
+
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
+  {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
+
+  {% for image in product.images %}
+    {% capture wrapper_class %}
+      {%- unless featured_image == image -%}
+        hide
+      {%- endunless -%}
+    {% endcapture %}
+
+    {% include 'responsive-image' with
+      image: image,
+      max_width: 700,
+      max_height: 800,
+    %}
+  {% endfor %}
+
+  {% if product.images.size > 1 %}
+    <ul>
+      {% for image in product.images %}
+        <li>
+          <a href="{{ image.src | img_url: '480x480' }}" data-thumbnail-id="{{ image.id }}" data-product-single-thumbnail{% if featured_image == image %} aria-current="true"{% endif %}>
+            <img class="product-single__thumbnail-image" src="{{ image.src | img_url: '160x160' }}" alt="{{ image.alt | escape }}">
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <h1>{{ product.title }}</h1>
+
+  {% form 'product', product %}
+    {% if product.variants.size > 1 %}
+      {% for option in product.options_with_values %}
+        <article>
+
+          {% if forloop.index0 > 0 %}
+
+            {% for value in option.values %}
+              <input type="radio" id="Option{{ option.position }}-{{ value }}" name="options[{{ option.name }}]" value="{{ value }}"{% if option.selected_value == value %} checked{% endif %}>
+              <label for="Option{{ option.position }}-{{ value }}">{{ value }}</label>
+            {% endfor %}
+
+          {% else %}
+
+            <label for="Option{{ option.position }}">
+              {{ option.name }}
+            </label>
+
+            <select name="id">
+              {% for variant in product.variants %}
+                <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}  value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+              {% endfor %}
+            </select>
+
+          {% endif %}
+        </article>
+      {% endfor %}
+    {% else %}
+      <input name="id" value="{{ product.variants.first.id }}" type="hidden" />
+    {% endif %}
+
+    <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
+    <input type="number" id="Quantity" name="quantity" value="1" min="1">
+
+
+    <div data-price-wrapper>
+      <span data-product-price>
+        {{ current_variant.price | money }}
+      </span>
+
+      {% if product.compare_at_price_max > product.price %}
+        <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+        <s data-compare-price>
+          {% if current_variant.compare_at_price > current_variant.price %}
+            {{ current_variant.compare_at_price | money }}
+          {% endif %}
+        </s>
+      {% endif %}
+    </div>
+
+    <button
+      type="submit"
+      name="add"
+      data-submit-button
+      {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+        <span data-submit-button-text>
+          {% if current_variant.available %}
+            {{ 'products.product.add_to_cart' | t }}
+          {% else %}
+            {{ 'products.product.sold_out' | t }}
+          {% endif %}
+        </span>
+    </button>
+  {% endform %}
+
+  <div class="rte">
+    {{ product.description }}
+  </div>
+</section>
 
 <script type="application/ld+json">
 {
