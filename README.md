@@ -1,5 +1,7 @@
 # UD Shopify Boilerplate
 
+> :warning: Shopify's own [Dawn theme](https://github.com/Shopify/dawn) superceded this project. This project is deprecated.
+
 A bare-bones boilerplate built by webpack.
 
 Includes the following packages:
